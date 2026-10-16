@@ -1,5 +1,6 @@
 const valid=/^0x[0-9a-fA-F]{40}$/.test(CONTRACT_ADDRESS);
-const buy=BUY_LINK||(valid?"https://app.uniswap.org/swap?outputCurrency="+CONTRACT_ADDRESS:"https://app.uniswap.org/swap");
+const buy=BUY_LINK||(valid?"https://app.uniswap.org/swap?chain=robinhood&inputCurrency=NATIVE&outputCurrency="+CONTRACT_ADDRESS:"https://app.uniswap.org/swap?chain=robinhood");
+document.querySelectorAll(".scan").forEach(a=>{if(valid)a.href="https://robinhoodchain.blockscout.com/token/"+CONTRACT_ADDRESS;else a.remove()});
 document.querySelectorAll(".buy").forEach(a=>{a.href=buy;a.target="_blank";a.rel="noopener"});
 document.querySelectorAll(".xlink").forEach(a=>{a.href=X_LINK;a.target="_blank";a.rel="noopener"});
 document.querySelectorAll(".ca").forEach(e=>e.textContent=CONTRACT_ADDRESS);
